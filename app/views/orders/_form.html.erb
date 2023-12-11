@@ -1,0 +1,31 @@
+<div class="form-header">
+<%= form_with(model: order) do |form| %>
+  <% if order.errors.any? %>
+    <div style="color: red">
+      <h2><%= pluralize(order.errors.count, "error") %> prohibited this order from being saved:</h2>
+
+      <ul>
+        <% order.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+    <%= form.label :name, "Name*", class: "form-label" %>
+    <%= form.text_field :name, class: "form-input" %>
+
+    <%= form.label :address, "Address*", class: "form-label" %>
+    <%= form.text_area :address, class: "form-input" %>
+
+    <%= form.label :email, "Email ID*", class: "form-label" %>
+    <%= form.text_field :email, class: "form-input" %>
+
+    <%= form.label :paytype, "PAYMENT METHOD*", class: "form-label" %>
+    <%= form.select :paytype, Order::PAYTYPES, {}, { class: 'form-control' } %>
+
+  <div>
+    <%= form.submit "Place Order", class: "btn btn-outline-primary"%>
+  </div>
+<% end %>
+</div>

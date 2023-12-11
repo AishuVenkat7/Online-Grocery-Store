@@ -1,0 +1,39 @@
+<header>
+    <div class="header-left">
+    <%= link_to shopper_url do %>
+        <h1>GrocerEaze</h1>
+    <% end %>
+    </div>
+    <div class="header-right">
+    <% if !user_signed_in? %>
+        <a href="#">
+            <% if @cart %>
+                <%= link_to cart_path(id: @cart.id) do %>
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="badge">
+                        <i id="total_cart_items_badge">(<%= @cart.total_items_in_the_cart%>)</i>
+                    </span>
+                     My Cart
+                <% end %>
+            <% else %>
+                <i class="fas fa-shopping-cart"></i>
+                 My Cart
+            <% end %>
+        </a>
+        <a href="#">
+            <%= link_to orders_path() do %>
+                <i class="fas fa-shopping-basket"></i> My Orders
+            <% end %>
+        </a>
+        <% end %>
+        <a href="#">
+            <% if user_signed_in? %>
+                <%= link_to destroy_user_session_path, data: { turbo_method: :delete } do%>
+                <i class="fas fa-user"></i> Admin Logout
+                <% end %>
+            <% end %>
+        </a>
+    </div>
+</header>
+
+

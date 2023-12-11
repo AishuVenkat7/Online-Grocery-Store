@@ -1,0 +1,50 @@
+<!-- Search Bar -->
+<%= form_tag(shopper_path, method: :get, id: "search-form") do %>
+  <div class="input-group mb-3" id="adv-search">
+    <%= text_field_tag :search, params[:search], placeholder: "Search using (name/desc/price)", class: "form-control" %>
+    <div class="input-group-append">
+      <%= button_tag(type: 'submit', class: "btn-primary") do %>
+        <i class="fas fa-search"></i> Search
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<div class="row">
+<div class="col-md-2">
+<div class="container">
+<h2> Category </h2>
+  <a href="<%= shopper_path() %>" class="category-link">All Products</a>
+  <a href="<%= shopper_path(category: 'fruits') %>" class="category-link">Fruits</a>
+  <a href="<%= shopper_path(category: 'vegetables') %>" class="category-link">Vegetables</a>
+  <a href="<%= shopper_path(category: 'dairy_and_egg') %>" class="category-link">Dairy and Eggs</a>
+  <a href="<%= shopper_path(category: 'snacks') %>" class="category-link">Snacks</a>
+  <a href="<%= shopper_path(category: 'candy') %>" class="category-link">Candy</a>
+  <a href="<%= shopper_path(category: 'bread') %>" class="category-link">Bread</a>
+</div>
+</div>
+
+<div id="products" class="col-md-9">
+    <% @allProducts.each do |product| %>
+      <div class="product">
+       <%= link_to shopper_show_path(id: product.id) do %>
+        <%= image_tag(product.image) %>
+        <p>
+            <strong>Name:</strong> <%= product.name %>
+        </p>
+        <p>
+            <strong>Description:</strong> <%= product.description %>
+        </p>
+        <p>
+            <strong>Price:</strong> <%= number_to_currency(product.price) %>
+        </p>
+        <p>
+            <strong>Category:</strong> <%= product.category %>
+        </p>
+        <% end %>
+      <%= button_to 'Add to Cart', lineitems_path(product_id: product.id), remote: true, class: "show-button"%>
+      </div>
+    <% end %>
+</div>
+</div>
+

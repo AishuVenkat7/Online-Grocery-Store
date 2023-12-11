@@ -1,0 +1,11 @@
+<div class="page-container">
+  <h2>Add new product</h2>
+
+  <div class="form-container">
+    <%= render "form", product: @product %>
+  </div>
+
+  <div>
+    <%= link_to "Back to products", products_path, class: "back-link-prod" %>
+  </div>
+</div>

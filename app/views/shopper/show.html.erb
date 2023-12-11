@@ -1,0 +1,22 @@
+<div class="product single-product">
+    <p class="notice"><%= notice %></p>
+    <%= image_tag(@product.image) %>
+    <p>
+        <strong>Name:</strong> <%= @product.name %>
+    </p>
+    <p>
+        <strong>Description:</strong> <%= @product.description %>
+    </p>
+    <p>
+        <strong>Price:</strong> <%= number_to_currency(@product.price) %>
+    </p>
+    <p>
+        <strong>Category:</strong> <%= @product.category %>
+    </p>
+    <div class="actions-container">
+        <%= link_to "Back to shopping", shopper_url, class: "back-link" %>
+        <%= button_to 'Add to Cart', lineitems_path(product_id: @product.id), remote: true, class: "show-button"%>
+    </div>
+</div>
+
+  

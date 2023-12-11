@@ -1,0 +1,13 @@
+<div class="page-container">
+  <p class="notice"><%= notice %></p>
+
+  <div class="product-details">
+    <%= render @product %>
+  </div>
+
+  <div class="actions-container">
+    <%= link_to "Edit this product", edit_product_path(@product), class: "edit-link edit-prod-color" %>
+    <%= link_to "Back to products", products_path, class: "back-link back-prod-color" %>
+    <%= button_to "Delete this product", @product, method: :delete, class: "delete-button" %>
+  </div>
+</div>

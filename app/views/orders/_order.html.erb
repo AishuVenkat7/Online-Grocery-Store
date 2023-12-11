@@ -1,0 +1,41 @@
+<div id="<%= dom_id order %>">
+
+  <p>
+    <strong>Oder Id:</strong>
+    <%= order.id %>
+  </p>
+  <p>
+    <strong>Name:</strong>
+    <%= order.name %>
+  </p>
+
+  <p>
+    <strong>Email:</strong>
+    <%= order.email %>
+  </p>
+
+    <p>
+      <strong>Total Price<strong>
+      <%= number_to_currency(order.total_order_price) %>
+    </p>
+
+    <%order.lineitems.each do |item|%>
+        <% product = item.product%>
+      <div class="product prod">
+        <%= image_tag(product.image) %>
+        <p>
+          <strong>Name:</strong> <%= product.name %>
+        </p>
+        <p>
+          <strong>Description:</strong> <%= product.description %>
+        </p>
+        <p>
+          <strong>Price:</strong> <%= number_to_currency(product.price) %>
+        </p>
+        <p>
+          <strong>Quantity purchased:</strong> <%= item.quantity %>
+        </p>
+      </div>
+    <% end %>
+
+</div>

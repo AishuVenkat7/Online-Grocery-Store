@@ -1,0 +1,26 @@
+<div id="<%= dom_id product %>">
+  <div class="product-image">
+    <%= image_tag(product.image, class: 'resized-image') %>
+  </div>
+
+  <div class="product-details">
+    <p>
+      <strong>Name:</strong>
+      <%= product.name %>
+    </p>
+
+    <p>
+      <strong>Description:</strong>
+      <%= product.description %>
+    </p>
+
+    <p>
+      <strong>Price:</strong>
+      <%= number_to_currency(product.price) %>
+    </p>
+    <p>
+      <strong>Category:</strong>
+      <%= product.category %>
+    </p>
+  </div>
+</div>

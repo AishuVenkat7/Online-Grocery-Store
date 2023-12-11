@@ -1,0 +1,8 @@
+<p style="color: green"><%= notice %></p>
+<h2>Your order</h2>
+<div class="actions-container">
+    <%= link_to "Back to shopping", shopper_url, class: "back-link" %>
+</div>
+<div id="products">
+<%= render @order %>
+</div>

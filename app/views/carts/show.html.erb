@@ -1,0 +1,35 @@
+<div class="container">
+  <p><%= notice %></p>
+
+  <h3>Items in your shopping cart</h3>
+  <table>
+    <tr>
+      <th>Product name</th>
+      <th>Product quantity</th>
+      <th>Product price</th>
+      <th>Edit quantity</th>
+    </tr>
+    <% @cart.lineitems.each do |item| %>
+    <tr>
+        <td><%= item.product.name %></td>
+        <td><%= item.quantity %></td>
+        <td><%= item.product.price %></td>
+        <td class="quantity-actions">
+          <%= button_to "+", { controller: 'lineitems', action: 'increment_quantity', product_id: item.product.id }, class: 'quantity-action' %>
+          <%= button_to "-", { controller: 'lineitems', action: 'decrement_quantity', product_id: item.product.id }, class: 'quantity-action' %>
+        </td>
+    </tr>
+    <% end %>
+    <tr>
+      <td colspan="2">Total Price</td>
+      <td><%= @cart.total_cart_price %></td>
+    </tr>
+  </table>
+
+  <div class="actions-container">
+    <%= link_to "Back to shopping", shopper_url, class: "back-link" %>
+    <%= button_to "Checkout", new_order_path, method: :get, class: "checkout-link" %>
+    <%= button_to "Empty this cart", @cart, method: :delete,
+      data: { confirm: 'Do you want to empty the cart?' }, class: "delete-button" %>
+  </div>
+</div>

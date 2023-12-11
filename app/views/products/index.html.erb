@@ -1,0 +1,49 @@
+<p style="color: green"><%= notice %></p>
+
+<h1 style="color: black;">Products
+<button class="add-button" onclick="window.location.href='<%= new_product_path %>'">
+Add new product</button>
+</h1>
+
+<!-- Search Bar -->
+<%= form_tag(products_path, method: :get, id: "search-form") do %>
+  <div class="input-group mb-3" id="adv-search">
+    <%= text_field_tag :search, params[:search], placeholder: "Search using (name/desc/price)", class: "form-control" %>
+    <div class="input-group-append">
+      <%= button_tag(type: 'submit', class: "btn-primary") do %>
+        <i class="fas fa-search"></i> Search
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+<div class="row">
+<div class="col-md-2">
+<div class="container">
+<h2> Category </h2>
+  <a href="<%= products_path() %>" class="category-link">All Products</a>
+  <a href="<%= products_path(category: 'fruits') %>" class="category-link">Fruits</a>
+  <a href="<%= products_path(category: 'vegetables') %>" class="category-link">Vegetables</a>
+  <a href="<%= products_path(category: 'dairy_and_egg') %>" class="category-link">Dairy and Eggs</a>
+  <a href="<%= products_path(category: 'snacks') %>" class="category-link">Snacks</a>
+  <a href="<%= products_path(category: 'candy') %>" class="category-link">Candy</a>
+  <a href="<%= products_path(category: 'bread') %>" class="category-link">Bread</a>
+</div>
+</div>
+
+<div id="products" class="col-md-10">
+  <% @products.each do |product| %>
+    <div class="product-container product-container-list">
+      <%= render product %>
+      <button class="show-button" onclick="window.location.href='<%= product_path(product) %>'">
+        Show this product
+      </button>
+    </div>
+  <% end %>
+</div>
+</div>
+
+
+
+
+
